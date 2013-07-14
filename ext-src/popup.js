@@ -27,11 +27,10 @@ function unixTime(sDate) {
 
 
 $(document).ready(function() {
-	var now    = unixTime()
-	var start  = unixTime("07/15/2013")
-	var finish = unixTime("07/22/2013")
-	console.log(finish - start,finish - now);
-	var val = 101;
+	var now    = unixTime();
+	var start  = unixTime("07/14/2013");
+	var finish = unixTime("07/22/2013");
+	var val = Math.round( 100 - ((finish-now) * 100 / (finish-start)) );
 	var bgColor = "#FFF";
 	var textColor = "#000";
 	if(val >= 85){
