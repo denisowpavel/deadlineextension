@@ -15,8 +15,22 @@ function valToStr(val){
 	return sVal;
 }
 
-$(document).ready(function() {
+function unixTime(sDate) {
+	var d;
+	if(sDate){
+		d = new Date(sDate)
+	}else{
+		d = new Date()
+	}
+    return d.getTime() / 1000;
+}
 
+
+$(document).ready(function() {
+	var now    = unixTime()
+	var start  = unixTime("07/15/2013")
+	var finish = unixTime("07/22/2013")
+	console.log(finish - start,finish - now);
 	var val = 101;
 	var bgColor = "#FFF";
 	var textColor = "#000";
