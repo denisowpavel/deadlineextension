@@ -1,5 +1,5 @@
-$(document).ready(function() {
-	var val = 80;	
+function valToStr(val){
+	var sVal = "";
 	if(val < 1){
 		val = 1;
 	}else if(val > 100){
@@ -12,6 +12,12 @@ $(document).ready(function() {
 	}else{
 		sVal = val;
 	}
+	return sVal;
+}
+
+$(document).ready(function() {
+
+	var val = 101;
 	var bgColor = "#FFF";
 	var textColor = "#000";
 	if(val >= 85){
@@ -19,5 +25,5 @@ $(document).ready(function() {
 		textColor = "#FFF";
 	}
 	$("body").css("background-color", bgColor);
-	$("img#progress").attr("src","img/progress0"+sVal+".png");
+	$("img#progress").attr("src","img/progress0"+valToStr(val)+".png");
 });
