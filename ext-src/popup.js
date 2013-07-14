@@ -18,7 +18,7 @@ function valToStr(val){
 function unixTime(sDate) {
 	var d;
 	if(sDate){
-		d = new Date(sDate)
+		d = new Date(sDate+" 12:00:00")
 	}else{
 		d = new Date()
 	}
