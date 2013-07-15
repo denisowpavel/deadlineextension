@@ -28,13 +28,15 @@ function unixTime(sDate) {
 
 $(document).ready(function() {
 	var now    = unixTime();
-	var start  = unixTime("07/14/2013");
-	var finish = unixTime("07/22/2013");
+	var start  = unixTime("07/13/2013");
+	var finish = unixTime("07/14/2013");
 	var val = Math.round( 100 - ((finish-now) * 100 / (finish-start)) );
-	var daysLeft = Math.round( (finish-now)/(60*60*24) )
+	var daysLeft = Math.round( (finish-now)/(60*60*24) )	
+	var badgeText = daysLeft+""
 	if( daysLeft < 0 ){
-		daysLeft = 0;
-	}
+		daysLeft = 0;	
+		badgeText = "";
+	}	
 	console.log(daysLeft);
 	var bgColor = "#FFF";
 	var textColor = "#555";
@@ -47,4 +49,5 @@ $(document).ready(function() {
 	
 	$("div#comment").css("color", textColor);
 	$("div#comment").html(daysLeft+" days left");
+	chrome.browserAction.setBadgeText ( { text: badgeText } );
 });
