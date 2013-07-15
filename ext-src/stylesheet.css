@@ -11,6 +11,11 @@ body {
   margin: 0px;  
 }
 
+body#popupbody {
+  width: 400;
+  height: 100;
+}
+
 .center{
   text-align: center;
 }
