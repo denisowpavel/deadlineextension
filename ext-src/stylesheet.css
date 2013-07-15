@@ -2,12 +2,15 @@ td, div, body {
   font-family: "Museo Sans", "Lucida Grande", Arial, sans-serif;
   line-height: 21px;
   font-size: 16;
-  color: #AAA;
-  text-shadow: 0px -1px 1px #000;
+  text-shadow: 0px -1px 1px #AAA;
   text-rendering: optimizelegibility;  
   -webkit-user-select: none;
 }
 
 body {
   margin: 0px;  
+}
+
+.center{
+  text-align: center;
 }

@@ -31,12 +31,20 @@ $(document).ready(function() {
 	var start  = unixTime("07/14/2013");
 	var finish = unixTime("07/22/2013");
 	var val = Math.round( 100 - ((finish-now) * 100 / (finish-start)) );
+	var daysLeft = Math.round( (finish-now)/(60*60*24) )
+	if( daysLeft < 0 ){
+		daysLeft = 0;
+	}
+	console.log(daysLeft);
 	var bgColor = "#FFF";
-	var textColor = "#000";
+	var textColor = "#555";
 	if(val >= 85){
 		bgColor = "#000";
 		textColor = "#FFF";
 	}
 	$("body").css("background-color", bgColor);
 	$("img#progress").attr("src","img/progress0"+valToStr(val)+".png");
+	
+	$("div#comment").css("color", textColor);
+	$("div#comment").html(daysLeft+" days left");
 });
