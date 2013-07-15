@@ -16,6 +16,6 @@
 	    },		
 	    "default_popup": "popup.html"
   	},
-  	"permissions": [""],
+  	"permissions": ["http://localhost:8888/"],
   	"update_url": "http://localhost:8888/cloud-transponder-tmp/updates.xml"
 }
