@@ -28,9 +28,9 @@ function unixTime(sDate) {
 
 $(document).ready(function() {
 	var now    = unixTime();
-	var start  = unixTime("07/13/2013");
-	var finish = unixTime("07/14/2013");
-	var val = Math.round( 100 - ((finish-now) * 100 / (finish-start)) );
+	var start  = unixTime("07/14/2013");
+	var finish = unixTime("07/22/2013");
+	var val = Math.round( 100 - ((finish-now) * 100 / (finish-start)) );// val = 99;
 	var daysLeft = Math.round( (finish-now)/(60*60*24) )	
 	var badgeText = daysLeft+""
 	if( daysLeft < 0 ){
@@ -43,6 +43,7 @@ $(document).ready(function() {
 	if(val >= 85){
 		bgColor = "#000";
 		textColor = "#FFF";
+		$("img#infoBtn").attr("src","img/info-w.png");
 	}
 	$("body").css("background-color", bgColor);
 	$("img#progress").attr("src","img/progress0"+valToStr(val)+".png");
@@ -50,4 +51,5 @@ $(document).ready(function() {
 	$("div#comment").css("color", textColor);
 	$("div#comment").html(daysLeft+" days left");
 	chrome.browserAction.setBadgeText ( { text: badgeText } );
+	
 });
