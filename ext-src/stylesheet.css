@@ -9,15 +9,13 @@ td, div, body {
 
 body {
   margin: 0px; 
-
-}
-
-body#popupbody {
-  width: 400;
-  height: 100;
   background: #555
 }
 
+.panel{
+  width: 400;
+  height: 100;
+}
 .center{
   text-align: center;
 }
