@@ -25,8 +25,8 @@ body {
 	border: 1px solid #CCC;	
 }
 
-img#infoBtn{
+img#infoBtn, img#infoBtnBg{
 	position: absolute;
-	right: 9px; 
-	bottom: 9px;
+	right: 8px; 
+	bottom: 6px;
 };
