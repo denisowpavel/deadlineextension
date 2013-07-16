@@ -1,5 +1,5 @@
 var heightProgress = 80;
-var heightSettings = 200;
+var heightSettings = 475;
 var animateTime = 300;
 
 function valToStr(val){
@@ -77,6 +77,10 @@ $(document).ready(function() {
 	///chrome.browserAction.setBadgeText ( { text: badgeText } );
 
 	
+	
+	$("div#startDate").datepicker();
+	$("div#finishDate").datepicker();
+
 
 	goToSettings(true);
 	$("div#settingsPanel").height(heightSettings);
