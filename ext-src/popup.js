@@ -36,7 +36,7 @@ function goToSettings(animationOff) {
 	}
     $("div#deadlinePanel").animate({
 	    'opacity':0.7,
-		'margin-left': -400
+		'margin-top': (-1 * heightProgress)
 	},localAnimateTime);	
 	$("html").animate({'height':heightSettings},localAnimateTime);
 	$("img#infoBtnBg").hide();
@@ -45,7 +45,7 @@ function goToSettings(animationOff) {
 function goToProgress() {
     $("div#deadlinePanel").animate({
 	    'opacity':1,
-		'margin-left': 0
+		'margin-top': 0
 	},animateTime);	
 	$("html").animate({'height':heightProgress},animateTime);
 }
