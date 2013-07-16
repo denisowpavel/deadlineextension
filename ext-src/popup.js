@@ -28,7 +28,7 @@ function unixTime(sDate) {
 
 $(document).ready(function() {
 
-	var heightProgress = 60;
+	var heightProgress = 80;
 	var heightSettings = 200;
 
 	var now    = unixTime();

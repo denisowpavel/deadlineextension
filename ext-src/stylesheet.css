@@ -13,7 +13,7 @@ body {
 
 .panel{
   width: 205;
-  height: 60;  
+  height: 80;  
 }
 .center{
   text-align: center;
@@ -28,5 +28,5 @@ body {
 img#infoBtn, img#infoBtnBg{
 	position: absolute;
 	right: 8px; 
-	bottom: 6px;
+	bottom: 8px;
 };
