@@ -27,6 +27,8 @@ function unixTime(sDate) {
 
 
 $(document).ready(function() {
+	$("div#deadlinePanel").width( $("body#popupbody").width() ).height( $("body#popupbody").height() )	
+
 	var now    = unixTime();
 	var start  = unixTime("07/14/2013");
 	var finish = unixTime("07/22/2013");
@@ -37,7 +39,6 @@ $(document).ready(function() {
 		daysLeft = 0;	
 		badgeText = "";
 	}	
-	console.log(daysLeft);
 	var bgColor = "#FFF";
 	var textColor = "#555";
 	if(val >= 85){
@@ -50,6 +51,16 @@ $(document).ready(function() {
 	
 	$("div#comment").css("color", textColor);
 	$("div#comment").html(daysLeft+" days left");
-	chrome.browserAction.setBadgeText ( { text: badgeText } );
+	///chrome.browserAction.setBadgeText ( { text: badgeText } );
+
+	
+	$("img#infoBtn").click(function () {
+        $("div#deadlinePanel").animate({
+		    'opacity':0.1,
+			'margin-left': -400
+		},1000,function(){ 		
+			console.log("setup")	
+		});	
+ 	});
 	
 });

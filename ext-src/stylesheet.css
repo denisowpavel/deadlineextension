@@ -19,6 +19,12 @@ body#popupbody {
 .center{
   text-align: center;
 }
+.absolute{
+	position: absolute;
+}
+.border{
+	border: 1px solid #CCC;	
+}
 
 img#infoBtn{
 	position: absolute;
