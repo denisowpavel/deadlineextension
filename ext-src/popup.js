@@ -30,6 +30,7 @@ $(document).ready(function() {
 
 	var heightProgress = 80;
 	var heightSettings = 200;
+	var animateTime = 300;
 
 	var now    = unixTime();
 	var start  = unixTime("07/14/2013");
@@ -66,8 +67,8 @@ $(document).ready(function() {
         $("div#deadlinePanel").animate({
 		    'opacity':0.7,
 			'margin-left': -400
-		},300);	
-		$("html").animate({'height':heightSettings},300);
+		},animateTime);	
+		$("html").animate({'height':heightSettings},animateTime);
 		$("img#infoBtnBg").hide();
 
  	});
@@ -75,8 +76,8 @@ $(document).ready(function() {
         $("div#deadlinePanel").animate({
 		    'opacity':1,
 			'margin-left': 0
-		},300);	
-		$("html").animate({'height':heightProgress},300);
+		},animateTime);	
+		$("html").animate({'height':heightProgress},animateTime);
  	});
 	
 });
