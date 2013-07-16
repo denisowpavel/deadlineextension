@@ -27,7 +27,6 @@ function unixTime(sDate) {
 
 
 $(document).ready(function() {
-	$("div#deadlinePanel").width( $("body").width() ).height( $("body").height() )	
 
 	var now    = unixTime();
 	var start  = unixTime("07/14/2013");
