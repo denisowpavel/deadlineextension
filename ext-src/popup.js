@@ -28,6 +28,9 @@ function unixTime(sDate) {
 
 $(document).ready(function() {
 
+	var heightProgress = 100;
+	var heightSettings = 200;
+
 	var now    = unixTime();
 	var start  = unixTime("07/14/2013");
 	var finish = unixTime("07/22/2013");
@@ -54,18 +57,22 @@ $(document).ready(function() {
 
 	
 
-	//$("div#deadlinePanel").animate({'margin-left': -400},0);	
+
+	$("div#settingsPanel").height(heightSettings);
 	$("img#infoBtn").click(function () {
         $("div#deadlinePanel").animate({
 		    'opacity':0.7,
 			'margin-left': -400
 		},300);	
+		$("html").animate({'height':heightSettings},300);
+
  	});
 	$("button#doneBtn").button().click(function () {
         $("div#deadlinePanel").animate({
 		    'opacity':1,
 			'margin-left': 0
 		},300);	
+		$("html").animate({'height':heightProgress},300);
  	});
 	
 });
