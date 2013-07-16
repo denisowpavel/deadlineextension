@@ -30,6 +30,21 @@ body {
 .minormargin{
 	margin: 2px;
 }
+.calendar{
+	font-size: 8;
+}
+
+.ui-datepicker td span, .ui-datepicker td a
+{    
+  height: 13px;  
+}
+
+.ui-datepicker table { color: #555; }
+.ui-button { background-color: #EAEAEA;color: #434343;border: 1px solid #EAEAEA;box-shadow: 0px 2px 0px #C1C1C1;}
+.ui-button:hover { background-color: #F4F4F4; border: 1px solid #F4F4F4; }
+.ui-button:active { background-color: #C1C1C1;}
+
+
 img#infoBtn, img#infoBtnBg{
 	position: absolute;
 	right: 8px; 

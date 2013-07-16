@@ -1,6 +1,6 @@
 var heightProgress = 80;
-var heightSettings = 475;
-var animateTime = 300;
+var heightSettings = 395;
+var animateTime = 200;
 
 function valToStr(val){
 	var sVal = "";
