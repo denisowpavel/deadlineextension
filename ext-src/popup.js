@@ -53,13 +53,15 @@ $(document).ready(function() {
 	///chrome.browserAction.setBadgeText ( { text: badgeText } );
 
 	
+
+	//$("div#deadlinePanel").animate({'margin-left': -400},0);	
 	$("img#infoBtn").click(function () {
         $("div#deadlinePanel").animate({
 		    'opacity':0.7,
 			'margin-left': -400
 		},300);	
  	});
-	$("button#doneBtn").click(function () {
+	$("button#doneBtn").button().click(function () {
         $("div#deadlinePanel").animate({
 		    'opacity':1,
 			'margin-left': 0
