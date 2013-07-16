@@ -58,9 +58,13 @@ $(document).ready(function() {
         $("div#deadlinePanel").animate({
 		    'opacity':0.1,
 			'margin-left': -400
-		},1000,function(){ 		
-			console.log("setup")	
-		});	
+		},300);	
+ 	});
+	$("button#doneBtn").click(function () {
+        $("div#deadlinePanel").animate({
+		    'opacity':1,
+			'margin-left': 0
+		},300);	
  	});
 	
 });
