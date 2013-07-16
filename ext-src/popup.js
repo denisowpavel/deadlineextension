@@ -46,7 +46,7 @@ $(document).ready(function() {
 		textColor = "#FFF";
 		$("img#infoBtn").attr("src","img/info-w.png");
 	}
-	$("body").css("background-color", bgColor);
+	$("div#deadlinePanel").css("background-color", bgColor);
 	$("img#progress").attr("src","img/progress0"+valToStr(val)+".png");
 	
 	$("div#comment").css("color", textColor);
@@ -56,7 +56,7 @@ $(document).ready(function() {
 	
 	$("img#infoBtn").click(function () {
         $("div#deadlinePanel").animate({
-		    'opacity':0.1,
+		    'opacity':0.7,
 			'margin-left': -400
 		},300);	
  	});
