@@ -1,3 +1,7 @@
+var heightProgress = 80;
+var heightSettings = 200;
+var animateTime = 300;
+
 function valToStr(val){
 	var sVal = "";
 	if(val < 1){
@@ -25,12 +29,28 @@ function unixTime(sDate) {
     return d.getTime() / 1000;
 }
 
+function goToSettings(animationOff) {
+	var localAnimateTime = animateTime;
+	if(animationOff == true ){
+		localAnimateTime = 0;
+	}
+    $("div#deadlinePanel").animate({
+	    'opacity':0.7,
+		'margin-left': -400
+	},localAnimateTime);	
+	$("html").animate({'height':heightSettings},localAnimateTime);
+	$("img#infoBtnBg").hide();
+}
+
+function goToProgress() {
+    $("div#deadlinePanel").animate({
+	    'opacity':1,
+		'margin-left': 0
+	},animateTime);	
+	$("html").animate({'height':heightProgress},animateTime);
+}
 
 $(document).ready(function() {
-
-	var heightProgress = 80;
-	var heightSettings = 200;
-	var animateTime = 300;
 
 	var now    = unixTime();
 	var start  = unixTime("07/14/2013");
@@ -58,26 +78,14 @@ $(document).ready(function() {
 
 	
 
-	
+	goToSettings(true);
 	$("div#settingsPanel").height(heightSettings);
 	$("img#infoBtnBg").hide();
 	$("img#infoBtn").mouseover(function () {$("img#infoBtnBg").show();})
 	$("img#infoBtn").mouseout(function () {$("img#infoBtnBg").hide();})
-	$("img#infoBtn").click(function () {
-        $("div#deadlinePanel").animate({
-		    'opacity':0.7,
-			'margin-left': -400
-		},animateTime);	
-		$("html").animate({'height':heightSettings},animateTime);
-		$("img#infoBtnBg").hide();
-
- 	});
+	$("img#infoBtn").click(goToSettings);
 	$("button#doneBtn").button().click(function () {
-        $("div#deadlinePanel").animate({
-		    'opacity':1,
-			'margin-left': 0
-		},animateTime);	
-		$("html").animate({'height':heightProgress},animateTime);
+ 		goToProgress();
  	});
 	
 });
