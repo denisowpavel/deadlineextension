@@ -1,8 +1,7 @@
 td, div, body {
   font-family: "Museo Sans", "Lucida Grande", Arial, sans-serif;
   line-height: 21px;
-  font-size: 16;
-  text-shadow: 0px -1px 1px #AAA;
+  font-size: 10;
   text-rendering: optimizelegibility;  
   -webkit-user-select: none;
 }
@@ -13,8 +12,8 @@ body {
 }
 
 .panel{
-  width: 400;
-  height: 100;
+  width: 205;
+  height: 60;  
 }
 .center{
   text-align: center;
