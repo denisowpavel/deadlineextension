@@ -99,8 +99,11 @@ function renderPopUp(sStartDate,sFinishDate) {
 	$("div#startDate").datepicker({onSelect: dateWasChanged}).datepicker('setDate', sStartDate);
 	$("div#finishDate").datepicker({onSelect: dateWasChanged}).datepicker('setDate', sFinishDate);
 
-	//goToProgress(true);
-	goToSettings(true);
+	if(sStartDate!="" && sFinishDate!=""){
+		goToProgress(true);
+	}else{
+		goToSettings(true);	
+	}
 	$("div#settingsPanel").height(heightSettings);
 	$("img#infoBtnBg").hide();
 	$("img#infoBtn").mouseover(function () {$("img#infoBtnBg").show();})
@@ -111,7 +114,7 @@ function renderPopUp(sStartDate,sFinishDate) {
  	});
 }
 $(document).ready(function() {
-	//debug
+	//debug clean local storage
 	//chrome.storage.local.set({startDate:""}, function() {});
 	//chrome.storage.local.set({finishDate:""}, function() {});
 
