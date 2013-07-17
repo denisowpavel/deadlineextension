@@ -59,10 +59,11 @@ function dateWasChanged(date,picker) {
 	console.log(picker.id, date)
 }
 $(document).ready(function() {
-
+	var sStartDate = "07/14/2013"
+	var sFinishDate = "07/22/2013"
 	var now    = unixTime();
-	var start  = unixTime("07/14/2013");
-	var finish = unixTime("07/22/2013");
+	var start  = unixTime(sStartDate);
+	var finish = unixTime(sFinishDate);
 	var val = Math.round( 100 - ((finish-now) * 100 / (finish-start)) );// val = 99;
 	var daysLeft = Math.round( (finish-now)/(60*60*24) )	
 	var badgeText = daysLeft+""
@@ -85,9 +86,9 @@ $(document).ready(function() {
 	///chrome.browserAction.setBadgeText ( { text: badgeText } );
 
 	
-	
-	$("div#startDate").datepicker({onSelect: dateWasChanged});
-	$("div#finishDate").datepicker({onSelect: dateWasChanged});
+	//
+	$("div#startDate").datepicker({onSelect: dateWasChanged}).datepicker('setDate', sStartDate);
+	$("div#finishDate").datepicker({onSelect: dateWasChanged}).datepicker('setDate', sFinishDate);
 
 	//goToProgress(true);
 	goToSettings(true);
