@@ -55,6 +55,9 @@ function goToProgress(animationOff) {
 	$("html").animate({'height':heightProgress},localAnimateTime,function(){$("div#settingsPanel").hide()});
 }
 
+function dateWasChanged(date,picker) {	
+	console.log(picker.id, date)
+}
 $(document).ready(function() {
 
 	var now    = unixTime();
@@ -83,11 +86,11 @@ $(document).ready(function() {
 
 	
 	
-	$("div#startDate").datepicker();
-	$("div#finishDate").datepicker();
+	$("div#startDate").datepicker({onSelect: dateWasChanged});
+	$("div#finishDate").datepicker({onSelect: dateWasChanged});
 
-	goToProgress(true);
-	//goToSettings(true);
+	//goToProgress(true);
+	goToSettings(true);
 	$("div#settingsPanel").height(heightSettings);
 	$("img#infoBtnBg").hide();
 	$("img#infoBtn").mouseover(function () {$("img#infoBtnBg").show();})
