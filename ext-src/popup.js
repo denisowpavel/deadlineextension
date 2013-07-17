@@ -56,11 +56,20 @@ function goToProgress(animationOff) {
 }
 
 function dateWasChanged(date,picker) {	
-	console.log(picker.id, date)
+	//to be refactoring
+	if(picker.id == "startDate"){
+		chrome.storage.local.set({startDate:date}, function() {});
+	}	
+	if(picker.id == "finishDate"){
+		chrome.storage.local.set({finishDate:date}, function() {});
+	}	
 }
-$(document).ready(function() {
-	var sStartDate = "07/14/2013"
-	var sFinishDate = "07/22/2013"
+
+function renderPopUp(sStartDate,sFinishDate) {	
+	console.log("s",sStartDate,"f",sFinishDate)	
+	// sStartDate = "07/14/2013"
+	// sFinishDate = "07/22/2013"
+
 	var now    = unixTime();
 	var start  = unixTime(sStartDate);
 	var finish = unixTime(sFinishDate);
@@ -100,5 +109,31 @@ $(document).ready(function() {
 	$("button#doneBtn").button().click(function () {
  		goToProgress();
  	});
+}
+$(document).ready(function() {
+	//debug
+	//chrome.storage.local.set({startDate:""}, function() {});
+	//chrome.storage.local.set({finishDate:""}, function() {});
+
+	var sStartDate = ""
+	var sFinishDate = ""
+	var bStartDateIsLoaded = false;
+	var bFinishDateIsLoaded = false;
+	chrome.storage.local.get('startDate', function(r) {
+	        sStartDate = r['startDate'];
+	        bStartDateIsLoaded = true;
+
+	        if(bStartDateIsLoaded && bFinishDateIsLoaded){
+	        	renderPopUp(sStartDate,sFinishDate);
+	    	}
+	});
+	chrome.storage.local.get('finishDate', function(r) {
+	        sFinishDate = r['finishDate'];
+	        bFinishDateIsLoaded = true;
+
+	        if(bStartDateIsLoaded && bFinishDateIsLoaded){
+	        	renderPopUp(sStartDate,sFinishDate);
+	    	}
+	});
 	
 });
