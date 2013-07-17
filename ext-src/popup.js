@@ -43,13 +43,16 @@ function goToSettings(animationOff) {
 	$("img#infoBtnBg").hide();
 }
 
-function goToProgress() {
-	$("div#settingsPanel").hide();
+function goToProgress(animationOff) {	
+	var localAnimateTime = animateTime;
+	if(animationOff == true ){
+		localAnimateTime = 0;
+	}
     $("div#deadlinePanel").animate({
 	    'opacity':1,
 		'margin-top': 0
-	},animateTime);	
-	$("html").animate({'height':heightProgress},animateTime);
+	},localAnimateTime);	
+	$("html").animate({'height':heightProgress},localAnimateTime,function(){$("div#settingsPanel").hide()});
 }
 
 $(document).ready(function() {
@@ -83,7 +86,7 @@ $(document).ready(function() {
 	$("div#startDate").datepicker();
 	$("div#finishDate").datepicker();
 
-	goToProgress();
+	goToProgress(true);
 	//goToSettings(true);
 	$("div#settingsPanel").height(heightSettings);
 	$("img#infoBtnBg").hide();
