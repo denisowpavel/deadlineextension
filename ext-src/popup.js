@@ -34,6 +34,7 @@ function goToSettings(animationOff) {
 	if(animationOff == true ){
 		localAnimateTime = 0;
 	}
+	$("div#settingsPanel").show();
     $("div#deadlinePanel").animate({
 	    'opacity':0.7,
 		'margin-top': (-1 * heightProgress)
@@ -43,6 +44,7 @@ function goToSettings(animationOff) {
 }
 
 function goToProgress() {
+	$("div#settingsPanel").hide();
     $("div#deadlinePanel").animate({
 	    'opacity':1,
 		'margin-top': 0
@@ -81,8 +83,8 @@ $(document).ready(function() {
 	$("div#startDate").datepicker();
 	$("div#finishDate").datepicker();
 
-
-	goToSettings(true);
+	goToProgress();
+	//goToSettings(true);
 	$("div#settingsPanel").height(heightSettings);
 	$("img#infoBtnBg").hide();
 	$("img#infoBtn").mouseover(function () {$("img#infoBtnBg").show();})
