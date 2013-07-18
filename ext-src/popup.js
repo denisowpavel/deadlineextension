@@ -1,6 +1,11 @@
+//global vars 
 var heightProgress = 80;
 var heightSettings = 395;
 var animateTime = 200;
+var gsStartDate = "" 
+var gsFinishDate = ""
+
+//http://www.benknowscode.com/2012/11/selecting-ranges-jquery-ui-datepicker.html
 
 function valToStr(val){
 	var sVal = "";
@@ -59,13 +64,15 @@ function dateWasChanged(date,picker) {
 	//to be refactoring
 	if(picker.id == "startDate"){
 		chrome.storage.local.set({startDate:date}, function() {});
+		gsStartDate = date;
 	}	
 	if(picker.id == "finishDate"){
 		chrome.storage.local.set({finishDate:date}, function() {});
+		gsFinishDate = date;
 	}	
 }
 
-function renderPopUp(sStartDate,sFinishDate) {	
+function renderPopUp(sStartDate,sFinishDate,animationOff) {	
 	console.log("s",sStartDate,"f",sFinishDate)	
 	// sStartDate = "07/14/2013"
 	// sFinishDate = "07/22/2013"
@@ -82,11 +89,13 @@ function renderPopUp(sStartDate,sFinishDate) {
 	}	
 	var bgColor = "#FFF";
 	var textColor = "#555";
+	var infoBtnSrc = "img/info-b.png"
 	if(val >= 85){
 		bgColor = "#000";
-		textColor = "#FFF";
-		$("img#infoBtn").attr("src","img/info-w.png");
-	}
+		textColor = "#FFF";		
+		infoBtnSrc = "img/info-w.png"
+	}	
+	$("img#infoBtn").attr("src",infoBtnSrc);
 	$("div#deadlinePanel").css("background-color", bgColor);
 	$("img#progress").attr("src","img/progress0"+valToStr(val)+".png");
 	
@@ -94,25 +103,17 @@ function renderPopUp(sStartDate,sFinishDate) {
 	$("div#comment").html(daysLeft+" days left");
 	///chrome.browserAction.setBadgeText ( { text: badgeText } );
 
-	
-	//
-	$("div#startDate").datepicker({onSelect: dateWasChanged}).datepicker('setDate', sStartDate);
-	$("div#finishDate").datepicker({onSelect: dateWasChanged}).datepicker('setDate', sFinishDate);
+
+	$("body").css("background-color","#555")
+	$("div#startDate").datepicker({onSelect: dateWasChanged}).datepicker('setDate', gsStartDate);
+	$("div#finishDate").datepicker({onSelect: dateWasChanged}).datepicker('setDate', gsFinishDate);
 
 	if(sStartDate!="" && sFinishDate!=""){
-		goToProgress(true);
+		goToProgress(animationOff);
 	}else{
-		goToSettings(true);	
+		goToSettings(animationOff);	
 	}
-	$("body").css("background-color","#555")
-	$("div#settingsPanel").height(heightSettings);
-	$("img#infoBtnBg").hide();
-	$("img#infoBtn").mouseover(function () {$("img#infoBtnBg").show();})
-	$("img#infoBtn").mouseout(function () {$("img#infoBtnBg").hide();})
-	$("img#infoBtn").click(goToSettings);
-	$("button#doneBtn").button().click(function () {
- 		goToProgress();
- 	});
+
 }
 $(document).ready(function() {
 	//debug clean local storage
@@ -128,7 +129,7 @@ $(document).ready(function() {
 	        bStartDateIsLoaded = true;
 
 	        if(bStartDateIsLoaded && bFinishDateIsLoaded){
-	        	renderPopUp(sStartDate,sFinishDate);
+	        	renderPopUp(sStartDate,sFinishDate,true);
 	    	}
 	});
 	chrome.storage.local.get('finishDate', function(r) {
@@ -136,8 +137,20 @@ $(document).ready(function() {
 	        bFinishDateIsLoaded = true;
 
 	        if(bStartDateIsLoaded && bFinishDateIsLoaded){
-	        	renderPopUp(sStartDate,sFinishDate);
+	        	renderPopUp(sStartDate,sFinishDate,true);
 	    	}
 	});
-	
+
+
+
+	//	
+	$("div#settingsPanel").height(heightSettings);
+	$("img#infoBtnBg").hide();
+	$("img#infoBtn").mouseover(function () {$("img#infoBtnBg").show();})
+	$("img#infoBtn").mouseout(function () {$("img#infoBtnBg").hide();})
+	$("img#infoBtn").click(goToSettings);
+	$("button#doneBtn").button().click(function () { 		
+ 		renderPopUp(gsStartDate,gsFinishDate,false);
+ 	});
+
 });
