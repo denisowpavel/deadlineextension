@@ -99,7 +99,7 @@ function renderPopUp(sStartDate,sFinishDate,animationOff) {
 	$("div#deadlinePanel").css("background-color", bgColor);
 	$("img#progress").attr("src","img/progress0"+valToStr(val)+".png");
 	
-	$("div#comment").css("color", textColor);
+	$("div#comment,div#title").css("color", textColor);
 	$("div#comment").html(daysLeft+" days left");
 	///chrome.browserAction.setBadgeText ( { text: badgeText } );
 
