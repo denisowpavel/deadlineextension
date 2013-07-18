@@ -126,6 +126,7 @@ $(document).ready(function() {
 	var bFinishDateIsLoaded = false;
 	chrome.storage.local.get('startDate', function(r) {
 	        sStartDate = r['startDate'];
+	        gsStartDate = sStartDate
 	        bStartDateIsLoaded = true;
 
 	        if(bStartDateIsLoaded && bFinishDateIsLoaded){
@@ -134,6 +135,7 @@ $(document).ready(function() {
 	});
 	chrome.storage.local.get('finishDate', function(r) {
 	        sFinishDate = r['finishDate'];
+	        gsFinishDate = sFinishDate
 	        bFinishDateIsLoaded = true;
 
 	        if(bStartDateIsLoaded && bFinishDateIsLoaded){
