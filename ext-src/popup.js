@@ -104,6 +104,7 @@ function renderPopUp(sStartDate,sFinishDate) {
 	}else{
 		goToSettings(true);	
 	}
+	$("body").css("background-color","#555")
 	$("div#settingsPanel").height(heightSettings);
 	$("img#infoBtnBg").hide();
 	$("img#infoBtn").mouseover(function () {$("img#infoBtnBg").show();})

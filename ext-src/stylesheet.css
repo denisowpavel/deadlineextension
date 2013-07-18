@@ -8,7 +8,7 @@ td, div, body {
 
 body {
   margin: 0px; 
-  background: #555;
+  background: #FFF;
   color: #EEE;
 }
 
@@ -23,6 +23,9 @@ body {
 }
 .absolute{
 	position: absolute;
+}
+.invisible{
+  display: none;
 }
 .border{
 	border: 1px solid #CCC;	
