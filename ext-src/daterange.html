@@ -1,0 +1,64 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">        
+    <link rel="stylesheet" href="stylesheet.css" />
+    <link rel="stylesheet" href="jquery-ui.css" />     
+   <script src="http://code.jquery.com/jquery.js"></script>
+   <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+
+	<style>
+
+.date-range-selected > .ui-state-active,
+.date-range-selected > .ui-state-default {
+   background: none;
+   background-color: lightsteelblue;
+}
+</style>
+
+
+
+<div id="DateRrange" class="calendar"></div>
+
+
+</body>
+</html>
+
+
+<script>
+$(document).ready(function() {
+
+
+
+$(function() {
+
+	function dateWasChanged(start,finish){
+		console.log(start,finish);
+	}
+
+   var cur = -1, prv = -1;
+   $("div#DateRrange")
+      .datepicker({ beforeShowDay: function ( date ) {
+						return [true, ( (date.getTime() >= Math.min(prv, cur) && date.getTime() <= Math.max(prv, cur)) ? 'date-range-selected' : '')];
+					},
+		            onSelect: function ( dateText, inst ) {
+		                  var d1, d2;
+		                  prv = cur;
+		                  cur = (new Date(inst.selectedYear, inst.selectedMonth, inst.selectedDay)).getTime();
+		                  if ( prv == -1 || prv == cur ) {
+		                     prv = cur;
+		                     $('#jrange input').val( dateText );
+		                  } else {
+		                     d1 = $.datepicker.formatDate( 'mm/dd/yy', new Date(Math.min(prv,cur)), {} );
+		                     d2 = $.datepicker.formatDate( 'mm/dd/yy', new Date(Math.max(prv,cur)), {} );
+		                     $('#jrange input').val( d1+' - '+d2 );
+		                  }
+		                  if(d1 && d1){
+		                  	dateWasChanged(d1, d2);
+		                  }                  
+		               },
+         })
+
+
+});
+});
+</script>
