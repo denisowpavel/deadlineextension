@@ -66,7 +66,7 @@ function dateWasChanged(start,finish) {
 }
 
 function renderPopUp(sStartDate,sFinishDate,animationOff) {	
-	console.log("s",sStartDate,"f",sFinishDate)	
+	console.log("s",">"+sStartDate+"<","f",">"+sFinishDate+"<")	
 
 	var now    = unixTime();
 	var start  = unixTime(sStartDate);
@@ -97,23 +97,23 @@ function renderPopUp(sStartDate,sFinishDate,animationOff) {
 
 	$("body").css("background-color","#555")
 
-    sStartDate = new Date(gsStartDate);
-    sFinishDate = new Date(gsFinishDate);
+    var startCur = new Date(gsStartDate);
+    var finishCur = new Date(gsFinishDate);
 
    	$("div#dateRrange").datepicker({ 
    						beforeShowDay: function ( date ) {   							
-							return [true, ( (date.getTime() >= Math.min(sStartDate, sFinishDate) && date.getTime() <= Math.max(sStartDate, sFinishDate)) ? 'date-range-selected' : '')];
+							return [true, ( (date.getTime() >= Math.min(startCur, finishCur) && date.getTime() <= Math.max(startCur, finishCur)) ? 'date-range-selected' : '')];
 						},
 			            onSelect: function ( dateText, inst ) {
 			                  var d1, d2;
-			                  sStartDate = sFinishDate;
-			                  sFinishDate = (new Date(inst.selectedYear, inst.selectedMonth, inst.selectedDay)).getTime();
-			                  if ( sStartDate == -1 || sStartDate == sFinishDate ) {
-			                     sStartDate = sFinishDate;
+			                  startCur = finishCur;
+			                  finishCur = (new Date(inst.selectedYear, inst.selectedMonth, inst.selectedDay)).getTime();
+			                  if ( startCur == -1 || startCur == finishCur ) {
+			                     startCur = finishCur;
 			                     $('#jrange input').val( dateText );
 			                  } else {
-			                     d1 = $.datepicker.formatDate( 'mm/dd/yy', new Date(Math.min(sStartDate,sFinishDate)), {} );
-			                     d2 = $.datepicker.formatDate( 'mm/dd/yy', new Date(Math.max(sStartDate,sFinishDate)), {} );
+			                     d1 = $.datepicker.formatDate( 'mm/dd/yy', new Date(Math.min(startCur,finishCur)), {} );
+			                     d2 = $.datepicker.formatDate( 'mm/dd/yy', new Date(Math.max(startCur,finishCur)), {} );
 			                     $('#jrange input').val( d1+' - '+d2 );
 			                  }
 			                  if(d1 && d1){
