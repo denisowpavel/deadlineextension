@@ -101,7 +101,7 @@ function renderPopUp(sStartDate,sFinishDate,animationOff) {
 	
 	$("div#comment,div#title").css("color", textColor);
 	$("div#comment").html(daysLeft+" days left");
-	///chrome.browserAction.setBadgeText ( { text: badgeText } );
+	chrome.browserAction.setBadgeText ( { text: badgeText } );
 
 
 	$("body").css("background-color","#555")
