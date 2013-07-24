@@ -47,6 +47,11 @@ body {
 .ui-button:hover { background-color: #F4F4F4; border: 1px solid #F4F4F4; }
 .ui-button:active { background-color: #C1C1C1;}
 
+.date-range-selected > .ui-state-active,
+.date-range-selected > .ui-state-default {
+   background: none !important; 
+   background-color: lightsteelblue !important;
+}
 
 img#infoBtn, img#infoBtnBg{
 	position: absolute;
