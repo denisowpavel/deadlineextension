@@ -1,11 +1,9 @@
 //global vars 
 var heightProgress = 80;
-var heightSettings = 395;
+var heightSettings = 212;
 var animateTime = 200;
 var gsStartDate = "" 
 var gsFinishDate = ""
-
-//http://www.benknowscode.com/2012/11/selecting-ranges-jquery-ui-datepicker.html
 
 function valToStr(val){
 	var sVal = "";
@@ -60,22 +58,15 @@ function goToProgress(animationOff) {
 	$("html").animate({'height':heightProgress},localAnimateTime,function(){$("div#settingsPanel").hide()});
 }
 
-function dateWasChanged(date,picker) {	
-	//to be refactoring
-	if(picker.id == "startDate"){
-		chrome.storage.local.set({startDate:date}, function() {});
-		gsStartDate = date;
-	}	
-	if(picker.id == "finishDate"){
-		chrome.storage.local.set({finishDate:date}, function() {});
-		gsFinishDate = date;
-	}	
+
+function dateWasChanged(start,finish) {	
+	chrome.storage.local.set({startDate:start, finishDate:finish}, function() {});
+	gsStartDate = start;
+	gsFinishDate = finish;
 }
 
 function renderPopUp(sStartDate,sFinishDate,animationOff) {	
 	console.log("s",sStartDate,"f",sFinishDate)	
-	// sStartDate = "07/14/2013"
-	// sFinishDate = "07/22/2013"
 
 	var now    = unixTime();
 	var start  = unixTime(sStartDate);
@@ -105,8 +96,31 @@ function renderPopUp(sStartDate,sFinishDate,animationOff) {
 
 
 	$("body").css("background-color","#555")
-	$("div#startDate").datepicker({onSelect: dateWasChanged}).datepicker('setDate', gsStartDate);
-	$("div#finishDate").datepicker({onSelect: dateWasChanged}).datepicker('setDate', gsFinishDate);
+
+    sStartDate = new Date(gsStartDate);
+    sFinishDate = new Date(gsFinishDate);
+
+   	$("div#dateRrange").datepicker({ 
+   						beforeShowDay: function ( date ) {   							
+							return [true, ( (date.getTime() >= Math.min(sStartDate, sFinishDate) && date.getTime() <= Math.max(sStartDate, sFinishDate)) ? 'date-range-selected' : '')];
+						},
+			            onSelect: function ( dateText, inst ) {
+			                  var d1, d2;
+			                  sStartDate = sFinishDate;
+			                  sFinishDate = (new Date(inst.selectedYear, inst.selectedMonth, inst.selectedDay)).getTime();
+			                  if ( sStartDate == -1 || sStartDate == sFinishDate ) {
+			                     sStartDate = sFinishDate;
+			                     $('#jrange input').val( dateText );
+			                  } else {
+			                     d1 = $.datepicker.formatDate( 'mm/dd/yy', new Date(Math.min(sStartDate,sFinishDate)), {} );
+			                     d2 = $.datepicker.formatDate( 'mm/dd/yy', new Date(Math.max(sStartDate,sFinishDate)), {} );
+			                     $('#jrange input').val( d1+' - '+d2 );
+			                  }
+			                  if(d1 && d1){
+			                  	dateWasChanged(d1, d2);
+			                  }
+			               },
+    })
 
 	if(sStartDate!="" && sFinishDate!=""){
 		goToProgress(animationOff);
