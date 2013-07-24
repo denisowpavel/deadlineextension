@@ -7,7 +7,7 @@ var gsFinishDate = ""
 
 function valToStr(val){
 	var sVal = "";
-	if(val < 1){
+	if(val < 1 || isNaN(val)){
 		val = 1;
 	}else if(val > 100){
 		val = 100;
