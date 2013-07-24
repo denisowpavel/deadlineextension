@@ -38,7 +38,7 @@ $(function() {
    var sFinishDate = -1, sStartDate = -1;
    sStartDate = new Date("07/22/2013")
    sFinishDate = new Date("07/25/2013")
-   // 07/25/2013
+   
    $("div#DateRrange")
       .datepicker({ beforeShowDay: function ( date ) {
 						return [true, ( (date.getTime() >= Math.min(sStartDate, sFinishDate) && date.getTime() <= Math.max(sStartDate, sFinishDate)) ? 'date-range-selected' : '')];
