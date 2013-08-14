@@ -7,6 +7,7 @@
            		"48": "img/icon48.png",
           		"128": "img/icon128.png" },
   	"background": {
+  		"persistent": true,
    		"scripts": ["jquery.min.js","background.js"] 
    	},
 	"browser_action": {
@@ -16,6 +17,6 @@
 	    },		
 	    "default_popup": "popup.html"
   	},
-  	"permissions": ["http://localhost:8888/", "storage"],
+  	"permissions": ["http://localhost:8888/", "storage", "alarms"],
   	"update_url": "http://localhost:8888/cloud-transponder-tmp/updates.xml"
 }

@@ -5,6 +5,8 @@ var animateTime = 200;
 var gsStartDate = "" 
 var gsFinishDate = ""
 
+
+
 function valToStr(val){
 	var sVal = "";
 	if(val < 1 || isNaN(val)){
@@ -92,7 +94,7 @@ function renderPopUp(sStartDate,sFinishDate,animationOff) {
 	
 	$("div#comment,div#title").css("color", textColor);
 	$("div#comment").html(daysLeft+" days left");
-	chrome.browserAction.setBadgeText ( { text: badgeText } );
+	//chrome.browserAction.setBadgeText ( { text: badgeText } );
 
 
 	$("body").css("background-color","#555")
@@ -133,6 +135,11 @@ $(document).ready(function() {
 	//debug clean local storage
 	//chrome.storage.local.set({startDate:""}, function() {});
 	//chrome.storage.local.set({finishDate:""}, function() {});
+
+	var bgScript = chrome.extension.getBackgroundPage()	 
+	if (bgScript != null){
+		bgScript.updateBadge();
+	}
 
 	var sStartDate = ""
 	var sFinishDate = ""
