@@ -34,6 +34,32 @@ function unixTime(sDate) {
     return d.getTime() / 1000;
 }
 
+function loadDatesFromStorage() {
+	var sStartDate = ""
+	var sFinishDate = ""
+	var bStartDateIsLoaded = false;
+	var bFinishDateIsLoaded = false;
+	chrome.storage.local.get('startDate', function(r) {
+	        sStartDate = r['startDate'];
+	        gsStartDate = sStartDate
+	        bStartDateIsLoaded = true;
+
+	        if(bStartDateIsLoaded && bFinishDateIsLoaded){
+	        	renderPopUp(sStartDate,sFinishDate,true);
+	    	}
+	});
+	chrome.storage.local.get('finishDate', function(r) {
+	        sFinishDate = r['finishDate'];
+	        gsFinishDate = sFinishDate
+	        bFinishDateIsLoaded = true;
+
+	        if(bStartDateIsLoaded && bFinishDateIsLoaded){
+	        	renderPopUp(sStartDate,sFinishDate,true);
+	    	}
+	});	
+}
+
+
 function goToSettings(animationOff) {
 	var localAnimateTime = animateTime;
 	if(animationOff == true ){
@@ -141,31 +167,7 @@ $(document).ready(function() {
 		bgScript.updateBadge();
 	}
 
-	var sStartDate = ""
-	var sFinishDate = ""
-	var bStartDateIsLoaded = false;
-	var bFinishDateIsLoaded = false;
-	chrome.storage.local.get('startDate', function(r) {
-	        sStartDate = r['startDate'];
-	        gsStartDate = sStartDate
-	        bStartDateIsLoaded = true;
-
-	        if(bStartDateIsLoaded && bFinishDateIsLoaded){
-	        	renderPopUp(sStartDate,sFinishDate,true);
-	    	}
-	});
-	chrome.storage.local.get('finishDate', function(r) {
-	        sFinishDate = r['finishDate'];
-	        gsFinishDate = sFinishDate
-	        bFinishDateIsLoaded = true;
-
-	        if(bStartDateIsLoaded && bFinishDateIsLoaded){
-	        	renderPopUp(sStartDate,sFinishDate,true);
-	    	}
-	});
-
-
-
+	loadDatesFromStorage();
 	//	
 	$("div#settingsPanel").height(heightSettings);
 	$("img#infoBtnBg").hide();
