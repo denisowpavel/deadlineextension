@@ -34,7 +34,7 @@ function unixTime(sDate) {
     return d.getTime() / 1000;
 }
 
-function loadDatesFromStorage() {
+function loadDatesFromStorage(renderOff) {
 	var sStartDate = ""
 	var sFinishDate = ""
 	var bStartDateIsLoaded = false;
@@ -45,7 +45,7 @@ function loadDatesFromStorage() {
 	        bStartDateIsLoaded = true;
 
 	        if(bStartDateIsLoaded && bFinishDateIsLoaded){
-	        	calculateDate(sStartDate,sFinishDate,true,false);
+	        	calculateDate(sStartDate,sFinishDate,true,renderOff);
 	    	}
 	});
 	chrome.storage.local.get('finishDate', function(r) {
@@ -54,7 +54,7 @@ function loadDatesFromStorage() {
 	        bFinishDateIsLoaded = true;
 
 	        if(bStartDateIsLoaded && bFinishDateIsLoaded){
-	        	calculateDate(sStartDate,sFinishDate,true,false);
+	        	calculateDate(sStartDate,sFinishDate,true,renderOff);
 	    	}
 	});	
 }

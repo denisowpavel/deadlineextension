@@ -51,12 +51,12 @@ $(document).ready(function() {
 	//chrome.storage.local.set({startDate:""}, function() {});
 	//chrome.storage.local.set({finishDate:""}, function() {});
 
-	var bgScript = chrome.extension.getBackgroundPage()	 
-	if (bgScript != null){
-		bgScript.updateBadge();
-	}
+	// var bgScript = chrome.extension.getBackgroundPage()	 
+	// if (bgScript != null){
+	// 	bgScript.updateBadge();
+	// }
 
-	loadDatesFromStorage();
+	loadDatesFromStorage(false);
 	//	
 	$("div#settingsPanel").height(heightSettings);
 	$("img#infoBtnBg").hide();

@@ -1,14 +1,14 @@
-var iTemp = 0
+// var iTemp = 0
 
-function updateBadge(){	
-    //chrome.browserAction.setBadgeText ( { text: iTemp+"" } );
-    iTemp++;
-}
+// function updateBadge(){	
+//     //chrome.browserAction.setBadgeText ( { text: iTemp+"" } );
+//     iTemp++;
+// }
 
 chrome.alarms.clearAll()
-updateBadge();
+loadDatesFromStorage(false);
 
-chrome.alarms.create("main",{periodInMinutes: 1});
+chrome.alarms.create("main",{periodInMinutes: 0.1});
 chrome.alarms.onAlarm.addListener(function(alarm) {
-	updateBadge();  	
+	loadDatesFromStorage(false);	
 });
