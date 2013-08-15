@@ -110,7 +110,6 @@ function calculateDate(sStartDate,sFinishDate,animationOff,renderOff) {
     var startCur = new Date(gsStartDate);
     var finishCur = new Date(gsFinishDate);
 
-	//val daysLeft startCur finishCur
 	if(!renderOff){
 		renderPopUp(val,daysLeft,startCur,finishCur,sStartDate,sFinishDate,animationOff);	
 	}
