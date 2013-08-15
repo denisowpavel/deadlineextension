@@ -45,7 +45,7 @@ function loadDatesFromStorage() {
 	        bStartDateIsLoaded = true;
 
 	        if(bStartDateIsLoaded && bFinishDateIsLoaded){
-	        	calculateDate(sStartDate,sFinishDate,true);
+	        	calculateDate(sStartDate,sFinishDate,true,false);
 	    	}
 	});
 	chrome.storage.local.get('finishDate', function(r) {
@@ -54,7 +54,7 @@ function loadDatesFromStorage() {
 	        bFinishDateIsLoaded = true;
 
 	        if(bStartDateIsLoaded && bFinishDateIsLoaded){
-	        	calculateDate(sStartDate,sFinishDate,true);
+	        	calculateDate(sStartDate,sFinishDate,true,false);
 	    	}
 	});	
 }
@@ -93,7 +93,7 @@ function dateWasChanged(start,finish) {
 	gsFinishDate = finish;
 }
 
-function calculateDate(sStartDate,sFinishDate,animationOff) {	
+function calculateDate(sStartDate,sFinishDate,animationOff,renderOff) {	
 	console.log("s",">"+sStartDate+"<","f",">"+sFinishDate+"<")	
 
 	var now    = unixTime();
@@ -111,7 +111,9 @@ function calculateDate(sStartDate,sFinishDate,animationOff) {
     var finishCur = new Date(gsFinishDate);
 
 	//val daysLeft startCur finishCur
-	renderPopUp(val,daysLeft,startCur,finishCur,sStartDate,sFinishDate,animationOff);
+	if(!renderOff){
+		renderPopUp(val,daysLeft,startCur,finishCur,sStartDate,sFinishDate,animationOff);	
+	}
 }
 
 function renderPopUp(val,daysLeft,startCur,finishCur,sStartDate,sFinishDate,animationOff) {		
@@ -178,7 +180,7 @@ $(document).ready(function() {
 	$("img#infoBtn").mouseout(function () {$("img#infoBtnBg").hide();})
 	$("img#infoBtn").click(goToSettings);
 	$("button#doneBtn").button().click(function () { 		
- 		calculateDate(gsStartDate,gsFinishDate,false);
+ 		calculateDate(gsStartDate,gsFinishDate,false,false);
  	});
 
 });
