@@ -1,7 +1,7 @@
 var iTemp = 0
 
 function updateBadge(){	
-    chrome.browserAction.setBadgeText ( { text: iTemp+"" } );
+    //chrome.browserAction.setBadgeText ( { text: iTemp+"" } );
     iTemp++;
 }
 

@@ -45,7 +45,7 @@ function loadDatesFromStorage() {
 	        bStartDateIsLoaded = true;
 
 	        if(bStartDateIsLoaded && bFinishDateIsLoaded){
-	        	renderPopUp(sStartDate,sFinishDate,true);
+	        	calculateDate(sStartDate,sFinishDate,true);
 	    	}
 	});
 	chrome.storage.local.get('finishDate', function(r) {
@@ -54,7 +54,7 @@ function loadDatesFromStorage() {
 	        bFinishDateIsLoaded = true;
 
 	        if(bStartDateIsLoaded && bFinishDateIsLoaded){
-	        	renderPopUp(sStartDate,sFinishDate,true);
+	        	calculateDate(sStartDate,sFinishDate,true);
 	    	}
 	});	
 }
@@ -93,7 +93,7 @@ function dateWasChanged(start,finish) {
 	gsFinishDate = finish;
 }
 
-function renderPopUp(sStartDate,sFinishDate,animationOff) {	
+function calculateDate(sStartDate,sFinishDate,animationOff) {	
 	console.log("s",">"+sStartDate+"<","f",">"+sFinishDate+"<")	
 
 	var now    = unixTime();
@@ -106,6 +106,15 @@ function renderPopUp(sStartDate,sFinishDate,animationOff) {
 		daysLeft = 0;	
 		badgeText = "";
 	}	
+	chrome.browserAction.setBadgeText ( { text: badgeText } );
+    var startCur = new Date(gsStartDate);
+    var finishCur = new Date(gsFinishDate);
+
+	//val daysLeft startCur finishCur
+	renderPopUp(val,daysLeft,startCur,finishCur,sStartDate,sFinishDate,animationOff);
+}
+
+function renderPopUp(val,daysLeft,startCur,finishCur,sStartDate,sFinishDate,animationOff) {		
 	var bgColor = "#FFF";
 	var textColor = "#555";
 	var infoBtnSrc = "img/info-b.png"
@@ -120,13 +129,7 @@ function renderPopUp(sStartDate,sFinishDate,animationOff) {
 	
 	$("div#comment,div#title").css("color", textColor);
 	$("div#comment").html(daysLeft+" days left");
-	//chrome.browserAction.setBadgeText ( { text: badgeText } );
-
-
 	$("body").css("background-color","#555")
-
-    var startCur = new Date(gsStartDate);
-    var finishCur = new Date(gsFinishDate);
 
    	$("div#dateRrange").datepicker({ 
    						beforeShowDay: function ( date ) {   							
@@ -175,7 +178,7 @@ $(document).ready(function() {
 	$("img#infoBtn").mouseout(function () {$("img#infoBtnBg").hide();})
 	$("img#infoBtn").click(goToSettings);
 	$("button#doneBtn").button().click(function () { 		
- 		renderPopUp(gsStartDate,gsFinishDate,false);
+ 		calculateDate(gsStartDate,gsFinishDate,false);
  	});
 
 });
