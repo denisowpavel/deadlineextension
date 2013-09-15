@@ -1,0 +1,20 @@
+.center{
+	text-align: center;
+}
+
+.head{
+	height: 330px;
+	margin-top: -40px;
+}
+
+.grayBG{
+	background-color: #EAEAEA;
+}
+
+.lightBG{
+	background-color: #FFF;
+}
+
+img.screenImg{
+	margin-left: -15px;
+}
