@@ -102,7 +102,7 @@ function calculateDate(sStartDate,sFinishDate,animationOff,renderOff) {
 	var val = Math.round( 100 - ((finish-now) * 100 / (finish-start)) );// val = 99;
 	var daysLeft = Math.round( (finish-now)/(60*60*24) )	
 	var badgeText = daysLeft+""
-	if( daysLeft < 0 ){
+	if( sStartDate == undefined || sFinishDate == undefined || daysLeft < 0 ){
 		daysLeft = 0;	
 		badgeText = "";
 	}	
