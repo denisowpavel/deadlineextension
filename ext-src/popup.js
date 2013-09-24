@@ -39,7 +39,7 @@ function renderPopUp(val,daysLeft,startCur,finishCur,sStartDate,sFinishDate,anim
 			               },
     })
 
-	if(sStartDate!="" && sFinishDate!=""){
+	if(sStartDate!=undefined && sFinishDate!=undefined && sStartDate!="" && sFinishDate!=""){
 		goToProgress(animationOff);
 	}else{
 		goToSettings(animationOff);	
