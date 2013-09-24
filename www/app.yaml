@@ -14,5 +14,9 @@ handlers:
 - url: /js
   static_dir: js
 
+- url: /updates.xml
+  static_files: updates.xml
+  upload: updates.xml
+
 - url: .*
   script: main.py
