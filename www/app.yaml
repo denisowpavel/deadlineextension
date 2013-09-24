@@ -14,6 +14,9 @@ handlers:
 - url: /js
   static_dir: js
 
+- url: /repository
+  static_dir: repository
+
 - url: /updates.xml
   static_files: updates.xml
   upload: updates.xml
