@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
-	"name":"Deadline progress",
-	"description":"",
+	"name":"Deadline",
+	"description":"Deadline chrome extension, progress bar for control project time",
 	"version":"0.1",
 	"icons": { 	"16": "img/icon16.png",
            		"48": "img/icon48.png",
