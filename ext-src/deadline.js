@@ -94,7 +94,12 @@ function dateWasChanged(start,finish) {
 }
 
 function calculateDate(sStartDate,sFinishDate,animationOff,renderOff) {	
+
 	console.log("s",">"+sStartDate+"<","f",">"+sFinishDate+"<")	
+	if( sStartDate == "NaN/NaN/NaN" ||  sFinishDate == "NaN/NaN/NaN"){
+		sStartDate  = "";
+		sFinishDate = "";
+	}
 
 	var now    = unixTime();
 	var start  = unixTime(sStartDate);
