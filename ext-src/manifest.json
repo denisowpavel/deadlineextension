@@ -17,6 +17,6 @@
 	    },		
 	    "default_popup": "popup.html"
   	},
-  	"permissions": ["http://localhost:8888/", "storage", "alarms"],
-  	"update_url": "http://localhost:8888/cloud-transponder-tmp/updates.xml"
+  	"permissions": ["http://chromeutility.appspot.com/", "storage", "alarms"],
+  	"update_url": "http://chromeutility.appspot.com/updates.xml"
 }
