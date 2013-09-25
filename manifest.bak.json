@@ -17,5 +17,5 @@
 	    },		
 	    "default_popup": "popup.html"
   	},
-  	"permissions": ["http://chromeutility.appspot.com/", "storage", "alarms"]
+  	"permissions": ["storage", "alarms"],
 }
