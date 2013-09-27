@@ -1,1 +1,1 @@
-appcfg.py update ./
+/usr/local/bin/appcfg.py update ./
