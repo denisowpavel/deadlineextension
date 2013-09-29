@@ -14,7 +14,11 @@ function renderPopUp(val,daysLeft,startCur,finishCur,sStartDate,sFinishDate,anim
 	$("img#progress").attr("src","img/progress0"+valToStr(val)+".png");
 	
 	$("div#comment,div#title").css("color", textColor);
-	$("div#comment").html(daysLeft+" days left");
+	var daysLabel = "days left"
+	if(daysLeft <= 1){
+		daysLabel = "day left"
+	}
+	$("div#comment").html(daysLeft+" "+daysLabel);
 	$("body").css("background-color","#555")
 
    	$("div#dateRrange").datepicker({ 
