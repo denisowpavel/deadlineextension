@@ -48,8 +48,10 @@ function renderPopUp(val,daysLeft,startCur,finishCur,sStartDate,sFinishDate,anim
 }
 $(document).ready(function() {
 	//debug clean local storage
-	//chrome.storage.local.set({startDate:""}, function() {});
-	//chrome.storage.local.set({finishDate:""}, function() {});
+	//chrome.storage.local.remove("startDate", function() {console.log("Start Date Was Removed")});
+	//chrome.storage.local.remove("finishDate", function() {console.log("Finish Date Was Removed")});
+
+	
 
 	// var bgScript = chrome.extension.getBackgroundPage()	 
 	// if (bgScript != null){
