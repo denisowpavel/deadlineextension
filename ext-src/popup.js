@@ -31,7 +31,8 @@ function renderPopUp(val,daysLeft,startCur,finishCur,sStartDate,sFinishDate,anim
 			                        $('#jrange input').val( dateText );
 			                  } else {			                  	
 			                  		if(startCur == "Invalid Date" && finishCur>0){
-			                  			startCur = new Date();
+			                  			var now = new Date
+			                  			startCur = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0, 0);
 			                  		}
 			                     	d1 = $.datepicker.formatDate( 'mm/dd/yy', new Date(Math.min(startCur,finishCur)), {} );
 			                     	d2 = $.datepicker.formatDate( 'mm/dd/yy', new Date(Math.max(startCur,finishCur)), {} );			                     	
@@ -45,8 +46,8 @@ function renderPopUp(val,daysLeft,startCur,finishCur,sStartDate,sFinishDate,anim
 
 	if(sFinishDate!=undefined && sFinishDate!=""){
 		goToProgress(animationOff);
-	}else{		
-		goToSettings(animationOff);	
+	}else{
+		goToSettings(animationOff);
 	}
 
 }
