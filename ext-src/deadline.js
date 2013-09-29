@@ -41,9 +41,9 @@ function loadDatesFromStorage(renderOff) {
 	var bFinishDateIsLoaded = false;
 	chrome.storage.local.get('startDate', function(r) {
 	        sStartDate = r['startDate'];
-	        gsStartDate = sStartDate
-	        bStartDateIsLoaded = true;
-
+	        gsStartDate = sStartDate;
+	        bStartDateIsLoaded = true;	        
+	        
 	        if(bStartDateIsLoaded && bFinishDateIsLoaded){
 	        	calculateDate(sStartDate,sFinishDate,true,renderOff);
 	    	}
@@ -95,11 +95,15 @@ function dateWasChanged(start,finish) {
 
 function calculateDate(sStartDate,sFinishDate,animationOff,renderOff) {	
 
-	console.log("s",">"+sStartDate+"<","f",">"+sFinishDate+"<")	
-	if( sStartDate == "NaN/NaN/NaN" ||  sFinishDate == "NaN/NaN/NaN"){
+	
+	if( sStartDate == "NaN/NaN/NaN"  || sStartDate  == undefined ){
 		sStartDate  = "";
+	}
+	if( sFinishDate == "NaN/NaN/NaN" || sFinishDate == undefined ){
 		sFinishDate = "";
 	}
+
+	console.log("s",">"+sStartDate+"<","f",">"+sFinishDate+"<")	
 
 	var now    = unixTime();
 	var start  = unixTime(sStartDate);
@@ -107,7 +111,7 @@ function calculateDate(sStartDate,sFinishDate,animationOff,renderOff) {
 	var val = Math.round( 100 - ((finish-now) * 100 / (finish-start)) );// val = 99;
 	var daysLeft = Math.round( (finish-now)/(60*60*24) )	
 	var badgeText = daysLeft+""
-	if( sStartDate == undefined || sFinishDate == undefined || sStartDate == "" || sFinishDate == "" || daysLeft < 0 ){
+	if( sStartDate == "" || sFinishDate == "" || daysLeft < 0 ){
 		daysLeft = 0;	
 		badgeText = "";
 	}	

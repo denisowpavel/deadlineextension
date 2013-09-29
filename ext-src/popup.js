@@ -6,7 +6,7 @@ function renderPopUp(val,daysLeft,startCur,finishCur,sStartDate,sFinishDate,anim
 	var infoBtnSrc = "img/info-b.png"
 	if(val >= 85){
 		bgColor = "#000";
-		textColor = "#FFF";		
+		textColor = "#FFF";
 		infoBtnSrc = "img/info-w.png"
 	}	
 	$("img#infoBtn").attr("src",infoBtnSrc);
@@ -22,16 +22,20 @@ function renderPopUp(val,daysLeft,startCur,finishCur,sStartDate,sFinishDate,anim
 							return [true, ( (date.getTime() >= Math.min(startCur, finishCur) && date.getTime() <= Math.max(startCur, finishCur)) ? 'date-range-selected' : '')];
 						},
 			            onSelect: function ( dateText, inst ) {
-			                  var d1, d2;
+			                  var d1, d2;			                  
 			                  startCur = finishCur;
 			                  finishCur = (new Date(inst.selectedYear, inst.selectedMonth, inst.selectedDay)).getTime();
+			                  
 			                  if ( startCur == -1 || startCur == finishCur ) {
-			                     startCur = finishCur;
-			                     $('#jrange input').val( dateText );
-			                  } else {
-			                     d1 = $.datepicker.formatDate( 'mm/dd/yy', new Date(Math.min(startCur,finishCur)), {} );
-			                     d2 = $.datepicker.formatDate( 'mm/dd/yy', new Date(Math.max(startCur,finishCur)), {} );
-			                     $('#jrange input').val( d1+' - '+d2 );
+			                       	startCur = finishCur;			                     
+			                        $('#jrange input').val( dateText );
+			                  } else {			                  	
+			                  		if(startCur == "Invalid Date" && finishCur>0){
+			                  			startCur = new Date();
+			                  		}
+			                     	d1 = $.datepicker.formatDate( 'mm/dd/yy', new Date(Math.min(startCur,finishCur)), {} );
+			                     	d2 = $.datepicker.formatDate( 'mm/dd/yy', new Date(Math.max(startCur,finishCur)), {} );			                     	
+			                     	$('#jrange input').val( d1+' - '+d2 );
 			                  }
 			                  if(d1 && d1){
 			                  	dateWasChanged(d1, d2);
@@ -39,9 +43,9 @@ function renderPopUp(val,daysLeft,startCur,finishCur,sStartDate,sFinishDate,anim
 			               },
     })
 
-	if(sStartDate!=undefined && sFinishDate!=undefined && sStartDate!="" && sFinishDate!=""){
+	if(sFinishDate!=undefined && sFinishDate!=""){
 		goToProgress(animationOff);
-	}else{
+	}else{		
 		goToSettings(animationOff);	
 	}
 
